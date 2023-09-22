@@ -1,0 +1,28 @@
+form {
+  max-width: 300px;
+}
+
+form > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+input {
+  width: 100%;
+}
+
+output, input {
+  text-align: center;
+}
+
+.sorteado {
+  animation-duration: 2s;
+  animation-name: sorteado;
+}
+
+@keyframes sorteado {
+  from { background-color: skyblue; }
+  to { background-color: inherit; }
+}

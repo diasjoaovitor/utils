@@ -1,0 +1,28 @@
+input, output {
+  width: 100%;
+  max-width: 300px;
+  display: block;
+}
+
+output {
+  margin: 1rem 0;
+}
+
+.none {
+  display: none !important;
+} 
+
+.notificacao {
+  background-color: lightskyblue;
+  display: inline;
+  position: absolute;
+  padding: .5rem;
+  border-radius: 4px;
+  animation-duration: 3s;
+  animation-name: notificacao;
+}
+
+@keyframes notificacao {
+  from { margin-left: 80%; }
+  to { margin-left: 0; }
+}
