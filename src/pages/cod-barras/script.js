@@ -1,4 +1,4 @@
-const somadores = [0, 3, 6]
+const somadores = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
 
 const app = document.getElementById('codigoDeBarras')
 const input = app.querySelector('input')
@@ -40,7 +40,7 @@ input.addEventListener('change', e => {
     return
   }
   const { primeiroDigito, ultimoDigito, meio } = separarCodigoDeBarras(codigoDeBarrasDaEmbalagem)
-  if (primeiroDigito < 0 || primeiroDigito > 2) {
+  if (!somadores[primeiroDigito]) {
     render('Validação não implementada! confira se existe o caso nas tabelas')
     return
   }

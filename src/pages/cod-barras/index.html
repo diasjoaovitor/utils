@@ -10,101 +10,245 @@
     </div>
   </section>
   <section>
-    <p>Percebi que os códigos das embalagens dos produtos (fardos, caixas, cartelas, etc.), seguiam um certo padrão
-      quando comparado ao código da unidade. Aparentemente não é uma regra, apenas uma convenção. Não consegui
-      encontrar nenhuma informação a respeito disso, mas trabalhando na prática, percebi que a regra funciona na
-      maioria dos casos. Em um chute aleatório, estimo que funciona em 90% dos casos, principalmente no caso em que o
-      primeiro digito do código de barras da embalagem é igual a 1.</p>
-    <p>Esse também é o caso mais frequente. Segue uma tabela contendo alguns exemplos:</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Código de barras da embalagem</th>
-          <th>Código de barras da unidade</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>COPO DESC COPOMAIS 200ML PS 100UN BRANCO</td>
-          <td>17897147500940</td>
-          <td>7897147500943</td>
-        </tr>
-        <tr>
-          <td>TAPIOCA DO ZE 500G</td>
-          <td>17897702510476</td>
-          <td>7897702510479</td>
-        </tr>
-        <tr>
-          <td>MOLHO 3 EM1 QUERO FP.24X200G</td>
-          <td>17896102500674</td>
-          <td>7896102500677</td>
-        </tr>
-        <tr>
-          <td>ESCOVA DENTAL CONDOR PLUS 35 DURA CABECA MEDIA</td>
-          <td>17891055380120</td>
-          <td>7891055380123</td>
-        </tr>
-        <tr>
-          <td>DOCE PASTOSO C/LEITE TRIANGULO 400G POTE</td>
-          <td>17896434920478</td>
-          <td>7896434920471</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Como pode ser visto na tabela acima, o código de barras da embalagem contém 14 algarismos e inicia com o
-      digito 1. Já o código de barras da unidade, é igual a sequência do código de barras da embalagem, iniciando
-      a partir do segundo digito. O último digito é igual a soma do último algarismo do código da embalagem com 3,
-      caso o último digito da embalagem seja maior igual a 7, o valor será igual ao resto da divisão da soma desse
-      algarismo com 3. Vou usar como exemplo o Doce Triangulo: 8 + 3 = 11; 11/10 = 10; com resto igual a 1. O
-      código de barras da unidade contém 13 algarismos.</p>
-    <p>Quando o código de barras da embalagem se inicia com 0, podemos considerar que o somador seja 0. Logo, o
-      código de barras da unidade é igual ao código de barras da embalagem, iniciando a partir do segundo dígito
-      (7). A tabela a seguir apresenta esse caso:</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Código de barras da embalagem</th>
-          <th>Código de barras da unidade</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>CREME DE AVELA NUTELLA 140G</td>
-          <td>07898024395232</td>
-          <td>7898024395232</td>
-        </tr>
-        <tr>
-          <td>(PA) BEBIDA LACTEA SABOR MORANGO 1000ML</td>
-          <td>0735810177139</td>
-          <td>735810177139</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Para o caso do código da embalagem conter o primeiro digito igual a 2, o somador será 6. Como pode ser
-      analisado na tabela abaixo:</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Código de barras da embalagem</th>
-          <th>Código de barras da unidade</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>BISC.MONTEVERGINE TUB-IN AVELA</td>
-          <td>27896079846222</td>
-          <td>7896079846228</td>
-        </tr>
-        <tr>
-          <td>PAO DE FORMA VISCONTI 400G TRADICIONAL</td>
-          <td>27891962051332</td>
-          <td>7891962051338</td>
-        </tr>
-      </tbody>
-    </table>
+    <article>
+      <p>Somadores:</p>
+      <table class="somadores">
+        <thead>
+          <tr>
+            <th>Primeiro dígito</th>
+            <th>Somador</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>6</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>9 (ou -1)</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>12 (ou 2)</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>15 (ou 5)</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>18 (ou -2)</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>21 (ou 1)</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>24 (ou 4)</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>27 (ou 7)</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+    <hr>
+    <article>
+      <p>Percebi que os códigos das embalagens dos produtos (fardos, caixas, cartelas, etc.), seguiam um certo padrão
+        quando comparado ao código da unidade. Aparentemente não é uma regra, apenas uma convenção. Não consegui
+        encontrar nenhuma informação a respeito disso, mas trabalhando na prática, percebi que a regra funciona na
+        maioria dos casos. Em um chute aleatório, estimo que funciona em 90% dos casos, principalmente no caso em que o
+        primeiro digito do código de barras da embalagem é igual a 1.</p>
+      <p>Esse também é o caso mais frequente. Segue uma tabela contendo alguns exemplos:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Código de barras da embalagem</th>
+            <th>Código de barras da unidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>COPO DESC COPOMAIS 200ML PS 100UN BRANCO</td>
+            <td>17897147500940</td>
+            <td>7897147500943</td>
+          </tr>
+          <tr>
+            <td>TAPIOCA DO ZE 500G</td>
+            <td>17897702510476</td>
+            <td>7897702510479</td>
+          </tr>
+          <tr>
+            <td>MOLHO 3 EM1 QUERO FP.24X200G</td>
+            <td>17896102500674</td>
+            <td>7896102500677</td>
+          </tr>
+          <tr>
+            <td>ESCOVA DENTAL CONDOR PLUS 35 DURA CABECA MEDIA</td>
+            <td>17891055380120</td>
+            <td>7891055380123</td>
+          </tr>
+          <tr>
+            <td>DOCE PASTOSO C/LEITE TRIANGULO 400G POTE</td>
+            <td>17896434920478</td>
+            <td>7896434920471</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Como pode ser visto na tabela acima, o código de barras da embalagem contém 14 algarismos e inicia com o
+        digito 1. Já o código de barras da unidade, é igual a sequência do código de barras da embalagem, iniciando
+        a partir do segundo digito. O último digito é igual a soma do último algarismo do código da embalagem com 3,
+        caso o último digito da embalagem seja maior igual a 7, o valor será igual ao resto da divisão da soma desse
+        algarismo com 3. Vou usar como exemplo o Doce Triangulo: 8 + 3 = 11; 11/10 = 10; com resto igual a 1. O
+        código de barras da unidade contém 13 algarismos.</p>
+    </article>
+    <hr>
+    <article>
+      <p>Quando o código de barras da embalagem se inicia com 0, podemos considerar que o somador seja 0. Logo, o
+        código de barras da unidade é igual ao código de barras da embalagem, iniciando a partir do segundo dígito
+        (7). A tabela a seguir apresenta esse caso:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Código de barras da embalagem</th>
+            <th>Código de barras da unidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CREME DE AVELA NUTELLA 140G</td>
+            <td>07898024395232</td>
+            <td>7898024395232</td>
+          </tr>
+          <tr>
+            <td>(PA) BEBIDA LACTEA SABOR MORANGO 1000ML</td>
+            <td>0735810177139</td>
+            <td>735810177139</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+    <hr>
+    <article>
+      <p>Para o caso do código da embalagem conter o primeiro digito igual a 2, o somador será 6. Como pode ser
+        analisado na tabela abaixo:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Código de barras da embalagem</th>
+            <th>Código de barras da unidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BISC.MONTEVERGINE TUB-IN AVELA</td>
+            <td>27896079846222</td>
+            <td>7896079846228</td>
+          </tr>
+          <tr>
+            <td>PAO DE FORMA VISCONTI 400G TRADICIONAL</td>
+            <td>27891962051332</td>
+            <td>7891962051338</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+    <hr>
   </section>
-  <script src="./script.js"></script>
+  <article>
+    <p>Para o primeiro digito do código da embalagem ser igual a 3, o somador será 9 (ou -1):</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Código de barras da embalagem</th>
+          <th>Código de barras da unidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LAVA ROUPA PO OMO 360G BRANCO ABSOLUTO</td>
+          <td>37891150092212</td>
+          <td>7891150092211</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  <hr>
+  <article>
+    <p>Para o primeiro digito do código da embalagem ser igual a 5, o somador será 15 (ou 5):</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Código de barras da embalagem</th>
+          <th>Código de barras da unidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>YOKI BATATA PALHA EXTRA FINA 20X100G</td>
+          <td>57891095031127</td>
+          <td>7891095031122</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  <hr>
+  <article>
+    <p>Para o primeiro digito do código da embalagem ser igual a 6, o somador será 18 (ou -2):</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Código de barras da embalagem</th>
+          <th>Código de barras da unidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SUCO ALIANCA UVA 1,5LI VD TTO</td>
+          <td>67896100501821</td>
+          <td>7896100501829</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  <hr>
+  <article>
+    <p>Para o primeiro digito do código da embalagem ser igual a 8, o somador será 24 (ou 4):</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Código de barras da embalagem</th>
+          <th>Código de barras da unidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BATATA PALITO - AURORA - 2KG</td>
+          <td>87891164026376</td>
+          <td>7891164026370</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  <hr>
+</section>
+<script src="./script.js"></script>
 </div>

@@ -8,6 +8,10 @@ output {
   margin: 1rem 0;
 }
 
+.somadores {
+  text-align: center;
+}
+
 .none {
   display: none !important;
 } 
