@@ -1,5 +1,3 @@
-const somadores = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
-
 const app = document.getElementById('codigoDeBarras')
 const input = app.querySelector('input')
 const output = app.querySelector('output')
@@ -12,7 +10,7 @@ function separarCodigoDeBarras(codigoDeBarras) {
 }
 
 function calcularCodigoDeBarras(primeiroDigito, ultimoDigito, meio) {
-  const somador = somadores[primeiroDigito]
+  const somador = primeiroDigito * 3
   const novoUltimoDigito = (Number(ultimoDigito) + somador) % 10
   return meio + novoUltimoDigito
 }
@@ -40,7 +38,7 @@ input.addEventListener('change', e => {
     return
   }
   const { primeiroDigito, ultimoDigito, meio } = separarCodigoDeBarras(codigoDeBarrasDaEmbalagem)
-  if (!somadores[primeiroDigito]) {
+  if (primeiroDigito < 0) {
     render('Validação não implementada! confira se existe o caso nas tabelas')
     return
   }
