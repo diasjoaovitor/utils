@@ -5,7 +5,7 @@ const output = app.querySelector('output')
 function calcularCodigoDeBarrasDaUnidade(codigoDeBarrasDaEmbalagem) {
   const array = codigoDeBarrasDaEmbalagem.slice(1, -1).split('')
   const soma = array.reduce((total, numero, i) => total += i % 2 === 0 ? numero * 1 : numero * 3, 0)
-  const ultimoDigito = (Math.floor(soma / 10) + 1) * 10 - soma
+  const ultimoDigito = ((Math.floor(soma / 10) + 1) * 10 - soma) % 10
   const codigo = array.join('') + ultimoDigito
   return codigo
 }
